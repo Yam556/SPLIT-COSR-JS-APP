@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>split-cost</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+    <script defer src="./assets/js/app.js"></script>
+</head>
+<body>
+   <div class="split-cost-wrapper">
+    <h2>Split Cost</h2>
+    <div class="unsetteled-wrapper">
+        <h3>Unsetteled amount per users</h3>
+        <div>
+            <div class="amount">$60.00</div>
+            <button id="settlebtn">Settle Now</button>
+        </div>
+    </div>
+    <div class="user-wrapper">
+        <div><img src="https://randomuser.me/api/portraits/men/37.jpg" alt="#"></div>
+        <div><img src="https://randomuser.me/api/portraits/women/43.jpg" alt="#"></div>
+        <div><img src="https://randomuser.me/api/portraits/women/66.jpg" alt="#"></div>
+        <div><img src="https://randomuser.me/api/portraits/lego/6.jpg" alt="#"></div>
+    </div>
+    <form >
+        <div class="form-item">
+            <label for="">Description <span>*</span></label>
+            <input type="text" name="description" id="description">
+        </div>
+        <div class="form-row">
+            <div class="form-item">
+                <label >Amount$<span>*</span></label>
+                <input type="text" name="amount" id="amount">
+            </div>
+            <input type="submit" value="Add New">
+        </div>
+    </form>
+    <div class="expenses-wrapper">
+        <div class="expenses-item">
+            <div>
+                <span>Woolworth Items</span>
+                <span> $120.00</span>
+            </div>
+            <div class="date">12 March 2024 02:30:00</div>
+        </div>
+        <div class="expenses-item settled">
+            <div>
+                <span>Aldi Items</span>
+                <span> $100.00</span>
+            </div>
+            <div class="date">14 March 2024 02:30:00</div>
+        </div>
+    </div>
+    <div class="expenses-footer">
+        <button>View All</button>
+    </div>
+   </div> 
+</body>
+</html>
