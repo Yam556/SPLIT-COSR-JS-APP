@@ -64,7 +64,7 @@ function SplitCostApp(){
             total = total + Number(expense.amount);
         }
         const unsettledAmount = total / this.users.length;
-        this.unsettledAmount = unsettledAmount;
+        this.unsettledAmount = unsettledAmount.toFixed(2);
     }
     this.addNewEventListener = function(){
         document.querySelector("form").addEventListener("submit", (event) => {
@@ -75,7 +75,7 @@ function SplitCostApp(){
         let expenseElement = '';
         for(let expense of this.expenses){
             expenseElement += `
-            <div class="expenses-item">
+            <div class="expenses-item ${expense.isSetteled ? 'settled' : ''}">
             <div>
                 <span>${expense.description}</span>
                 <span> $${expense.amount}</span>
@@ -84,6 +84,20 @@ function SplitCostApp(){
         </div>`
         }
         document.querySelector(".expenses-wrapper").innerHTML = expenseElement;
+    }
+    this.addSettleNowEventListener = function(){
+        document.querySelector("#settlebtn").addEventListener("click", (event) =>{
+            this.settleNow(event);
+        })
+    }
+    this.settleNow = function(event){
+        console.log('Settling now!');
+        this.expenses = this.expenses.map(expense => {
+            return {...expense, isSetteled: true};
+        });
+        this.displayExpenses();
+        this.calculateUnsetteledAmount();
+        this.displayUnsetteledAmount();
     }
 }
 const splitCostApp = new SplitCostApp();
@@ -99,3 +113,4 @@ splitCostApp.addUser("punam", "adpnm414@gmail.com","0426738976","https://randomu
 splitCostApp.addUser("suhana", "suhana456@gmail.com","042673564","https://randomuser.me/api/portraits/men/45.jpg");
 splitCostApp.displayUsers();
 splitCostApp.addNewEventListener();
+splitCostApp.addSettleNowEventListener();
