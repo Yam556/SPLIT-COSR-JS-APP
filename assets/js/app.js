@@ -61,7 +61,9 @@ function SplitCostApp(){
     this.calculateUnsetteledAmount = function(){
         let total = 0;
         for(let expense of this.expenses){
+           if(!expense.isSetteled){
             total = total + Number(expense.amount);
+           }
         }
         const unsettledAmount = total / this.users.length;
         this.unsettledAmount = unsettledAmount.toFixed(2);
