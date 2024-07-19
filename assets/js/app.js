@@ -21,6 +21,7 @@ function SplitCostApp(){
     this.addUser = function(name, email, mobile, photo) {
         const user = new User(name, email, mobile, photo);
         this.users.push(user);
+        this.displayUsers();
     }
     this.displayUsers = function() {
         let userElements = '';
@@ -48,8 +49,6 @@ function SplitCostApp(){
         }
             this and below function is same */
         if(description && amount){
-            const expense = new Expense(description, amount);
-            this.expenses.unshift(expense);
             this.displayExpenses();
             document.querySelector("form").reset();
             this.calculateUnsetteledAmount();
@@ -67,6 +66,7 @@ function SplitCostApp(){
         }
         const unsettledAmount = total / this.users.length;
         this.unsettledAmount = unsettledAmount.toFixed(2);
+        
     }
     this.addNewEventListener = function(){
         document.querySelector("form").addEventListener("submit", (event) => {
@@ -101,6 +101,14 @@ function SplitCostApp(){
         this.calculateUnsetteledAmount();
         this.displayUnsetteledAmount();
     }
+    this.addNewUserEventListemenr = function(){
+        document.getElementById("addNewUser").addEventListener('click', () => {
+            const randomValue = parseInt(Math.random() * 100);
+            this.addUser("suhana", "suhana456@gmail.com","042673564", `https://randomuser.me/api/portraits/men/${randomValue}.jpg`);
+            this.calculateUnsetteledAmount();
+            this.displayUnsetteledAmount();
+        })
+    }
 }
 const splitCostApp = new SplitCostApp();
 console.log(splitCostApp);
@@ -116,3 +124,4 @@ splitCostApp.addUser("suhana", "suhana456@gmail.com","042673564","https://random
 splitCostApp.displayUsers();
 splitCostApp.addNewEventListener();
 splitCostApp.addSettleNowEventListener();
+splitCostApp.addNewUserEventListemenr();
