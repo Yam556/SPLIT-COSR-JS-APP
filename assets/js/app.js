@@ -1,22 +1,31 @@
+/* here user is a constructor function
+and defining name, email are properties  */
 function User(name, email, mobile, photo){
 this.name = name;
 this.email = email;
 this.mobile = mobile;
 this.photo = photo;
 }
+
 function Expense(description, amount){
     this.description = description;
     this.amount = amount;
     this.isSetteled = false;
     this.date = new Date
+    /* here isSetteled and date id not defined in above brackets 
+    coz this nis not changable function so we can pass them direnct below */
 }
 function SplitCostApp(){
     this.unsettledAmount = 0;
     this.users = [];
+    /* these are properties of splitcostapp object
+    [] these are arrays to hold multiple data 
+     */
     this.expenses = [];
     
     this.displayUnsetteledAmount = function() {
         document.querySelector(".amount").textContent =  `$${this.unsettledAmount}`;
+    /* here we have t */ 
     }
     this.addUser = function(name, email, mobile, photo) {
         const user = new User(name, email, mobile, photo);
@@ -34,6 +43,7 @@ function SplitCostApp(){
         event.preventDefault();
         console.log('Adding expenses...');
         const description = document.querySelector("#description").value;
+        /* we use.value to push data we entered in form to show in js */
         const amount = document.querySelector('#amount').value;
         console.log({description, amount});
         const expense = new Expense(description, amount);
